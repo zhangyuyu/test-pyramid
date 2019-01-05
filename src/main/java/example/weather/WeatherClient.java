@@ -1,5 +1,7 @@
 package example.weather;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,8 +13,10 @@ import java.util.Optional;
 @Component
 public class WeatherClient {
 
-    private static final String LATITUDE = "53.5511";
-    private static final String LONGITUDE = "9.9937";
+    private final Logger LOGGER = LoggerFactory.getLogger(WeatherClient.class);
+
+    private static final String LATITUDE = "39.90";
+    private static final String LONGITUDE = "116.40";
     private final RestTemplate restTemplate;
     private final String weatherServiceUrl;
     private final String weatherServiceApiKey;
@@ -30,6 +34,7 @@ public class WeatherClient {
         String url = String.format("%s/%s/%s,%s", weatherServiceUrl, weatherServiceApiKey, LATITUDE, LONGITUDE);
 
         try {
+            LOGGER.info("Getting the weather of latitude: {}, longitude: {}...", LATITUDE, LONGITUDE);
             return Optional.ofNullable(restTemplate.getForObject(url, WeatherResponse.class));
         } catch (RestClientException e) {
             return Optional.empty();

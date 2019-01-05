@@ -6,6 +6,7 @@ This repository contains a *Spring Boot* application with lots of exemplary test
 
 ## Read the Blog Post
 This repository is part of a [series of blog posts](http://www.hamvocke.com/blog/testing-microservices/) I wrote about testing microservices. I highly recommend you read them to get a better feeling for what it takes to test microservices and how you can implement a reliable test suite for a Spring Boot microservice application.
+中文版：[测试金字塔实战](https://insights.thoughtworks.cn/practical-test-pyramid/)
 
 ## Get started
 
@@ -23,7 +24,7 @@ The easiest way is to use the provided `startDatabase.sh` script. This script st
     
   * port: `1543`
   * username: `postgres`
-  * password: `password`
+  * password: `postgres`
   * database name: `postgres`
   
 If you don't want to use the script make sure to have a database with the same configuration or modify your `application.properties`.

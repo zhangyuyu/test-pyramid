@@ -24,23 +24,22 @@ import static org.hamcrest.Matchers.is;
 @SpringBootTest
 public class WeatherClientConsumerTest {
 
-    @Autowired
-    private WeatherClient weatherClient;
-
     @Rule
     public PactProviderRuleMk2 weatherProvider = new PactProviderRuleMk2
             ("weather_provider", "localhost", 8089, this);
+    @Autowired
+    private WeatherClient weatherClient;
 
-    @Pact(consumer="sample_microservice")
+    @Pact(consumer = "sample_microservice")
     public RequestResponsePact createPact(PactDslWithProvider builder) throws IOException {
         return builder
                 .given("weather forecast data")
                 .uponReceiving("a request for a weather request for Hamburg")
-                    .path("/some-test-api-key/53.5511,9.9937")
-                    .method("GET")
+                .path("/some-test-api-key/39.90,116.40")
+                .method("GET")
                 .willRespondWith()
-                    .status(200)
-                    .body(FileLoader.read("classpath:weatherApiResponse.json"), ContentType.APPLICATION_JSON)
+                .status(200)
+                .body(FileLoader.read("classpath:weatherApiResponse.json"), ContentType.APPLICATION_JSON)
                 .toPact();
     }
 

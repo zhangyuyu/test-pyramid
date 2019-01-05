@@ -2,12 +2,15 @@ package example.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
     private Currently currently;
 
-    public WeatherResponse() {}
+    public WeatherResponse() {
+    }
 
     public WeatherResponse(String currentSummary) {
         this.currently = new Currently(currentSummary);
@@ -23,12 +26,16 @@ public class WeatherResponse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         WeatherResponse response = (WeatherResponse) o;
 
-        return currently != null ? currently.equals(response.currently) : response.currently == null;
+        return Objects.equals(currently, response.currently);
     }
 
     @Override
@@ -47,7 +54,8 @@ public class WeatherResponse {
     public static class Currently {
         private String summary;
 
-        public Currently() {}
+        public Currently() {
+        }
 
         public Currently(String summary) {
             this.summary = summary;
@@ -59,12 +67,16 @@ public class WeatherResponse {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
 
             Currently currently = (Currently) o;
 
-            return summary != null ? summary.equals(currently.summary) : currently.summary == null;
+            return Objects.equals(summary, currently.summary);
         }
 
         @Override

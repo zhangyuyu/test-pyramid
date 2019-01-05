@@ -10,7 +10,7 @@
             "description": "a request for a weather request for Hamburg",
             "request": {
                 "method": "GET",
-                "path": "/some-test-api-key/53.5511,9.9937"
+                "path": "/some-test-api-key/39.90,116.40"
             },
             "response": {
                 "status": 200,

@@ -37,12 +37,12 @@ public class HelloE2ESeleniumTest {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.close();
     }
 
     @Test
-    public void helloPageHasTextHelloWorld(){
+    public void helloPageHasTextHelloWorld() {
         driver.navigate().to(String.format("http://localhost:%s/hello", port));
 
         WebElement body = driver.findElement(By.tagName("body"));

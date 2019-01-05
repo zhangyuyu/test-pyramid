@@ -19,9 +19,9 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 /**
- *  A provider test for the contract between this service (as a provider) and
- *  a primitive consumer. The implementation of the consumer can be
- *  found under https://github.com/hamvocke/spring-testing-consumer
+ * A provider test for the contract between this service (as a provider) and
+ * a primitive consumer. The implementation of the consumer can be
+ * found under https://github.com/hamvocke/spring-testing-consumer
  */
 
 @RunWith(RestPactRunner.class)
@@ -29,16 +29,13 @@ import static org.mockito.MockitoAnnotations.initMocks;
 @PactFolder("target/pacts") // tells pact where to load the pact files from
 public class ExampleProviderTest {
 
-    @Mock
-    private PersonRepository personRepository;
-
-    @Mock
-    private WeatherClient weatherClient;
-
-    private ExampleController exampleController;
-
     @TestTarget
     public final MockMvcTarget target = new MockMvcTarget();
+    @Mock
+    private PersonRepository personRepository;
+    @Mock
+    private WeatherClient weatherClient;
+    private ExampleController exampleController;
 
     @Before
     public void before() {

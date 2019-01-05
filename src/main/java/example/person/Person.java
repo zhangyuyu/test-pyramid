@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Person {
@@ -14,7 +15,8 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    protected Person() {}
+    protected Person() {
+    }
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
@@ -35,14 +37,22 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Person person = (Person) o;
 
-        if (id != null ? !id.equals(person.id) : person.id != null) return false;
-        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
-        return lastName != null ? lastName.equals(person.lastName) : person.lastName == null;
+        if (!Objects.equals(id, person.id)) {
+            return false;
+        }
+        if (!Objects.equals(firstName, person.firstName)) {
+            return false;
+        }
+        return Objects.equals(lastName, person.lastName);
     }
 
     @Override
